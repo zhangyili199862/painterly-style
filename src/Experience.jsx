@@ -66,7 +66,7 @@ const Experience = () => {
             fov: 45,
             near: 1,
             far: 1000
-        }}>
+        }} dpr={[1, 2]}>
             <OrbitControls makeDefault />
             <ambientLight intensity={1.25} />
             <directionalLight position={[-5, 5, 5]} intensity={7} />

@@ -1,4 +1,5 @@
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { useEffect } from "react";
 const SpaceShip = () => {
     const spaceShip = useGLTF("/spaceship.glb");
     return <group scale={1}>
@@ -6,9 +7,14 @@ const SpaceShip = () => {
     </group>
 }
 const LittleTokyo = () => {
-    const tokyo = useGLTF("/LittlestTokyo.glb");
+    const { scene, animations } = useGLTF("/LittlestTokyo.glb");
+    const { actions,names } = useAnimations(animations, scene)
+    console.log(actions,names)
+    useEffect(() => {
+        actions[names[0]].play()
+    }, [])
     return <group scale={0.012}>
-        <primitive object={tokyo.scene}></primitive>
+        <primitive object={scene}></primitive>
     </group>
 }
 
